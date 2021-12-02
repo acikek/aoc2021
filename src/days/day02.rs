@@ -11,12 +11,10 @@ pub fn first_second(lines: &Vec<String>) -> (isize, isize) {
     let mut aim = 0;
 
     for line in lines {
-        let pair = line.split(" ").collect::<Vec<&str>>();
+        let pair = line.split_once(" ").unwrap();
+        let n = pair.1.parse::<isize>().unwrap();
 
-        let cmd = pair[0];
-        let n = pair[1].parse::<isize>().unwrap();
-
-        match cmd {
+        match pair.0 {
             "forward" => { 
                 x += n;
                 y2 += aim * n;
